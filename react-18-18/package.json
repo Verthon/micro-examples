@@ -1,0 +1,18 @@
+{
+  "name": "different-react-versions-16-18",
+  "description": "Two apps, one using React 16 and the other using React 18",
+  "version": "1.0.0",
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start-18-host": "npm --prefix ./react-18-host run start",
+    "start-18-consumer": "npm --prefix ./react-18-consumer run start",
+    "start": "concurrently -n react-18-host,react-18-consumer -c red,green \"npm run start-18-host\" \"npm run start-18-consumer\"",
+    "install-app": "npm --prefix ./react-18-host install && npm --prefix ./react-18-consumer install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
