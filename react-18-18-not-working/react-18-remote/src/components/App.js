@@ -18,13 +18,13 @@ export const App = () => {
           </React.Suspense>
         </div>
       </div>
-      <div
+      {/* <div
         style={{ border: "1px red solid", padding: "10px", margin: "20px 0" }}
       >
         <React.Suspense fallback="Loading Couner">
           <Counter />
         </React.Suspense>
-      </div>
+      </div> */}
 
       <div
         style={{ border: "1px red solid", padding: "10px", margin: "20px 0" }}

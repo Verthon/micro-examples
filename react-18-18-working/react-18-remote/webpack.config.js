@@ -57,7 +57,6 @@ const webpackConfig = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      app2RemoteEntry: getRemoteEntryUrl(3002),
     }),
   ],
 };

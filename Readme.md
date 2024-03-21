@@ -30,12 +30,12 @@ npm i
 npm run start
 ```
 
-`host` app should be on `http://localhost:3001/`
-`remote` app should be on `http://localhost:3002/`
+`host` app should be on `http://localhost:3002/`
+`remote` app should be on `http://localhost:3001/`
 
 ## Working examples
 
-### 18-18
+### [18-18](https://github.com/WuMat/micro-examples/tree/main/react-18-18-working)
 
 ```javascript
 /**
@@ -74,6 +74,36 @@ npm run start
       singleton: true,
       requiredVersion: pkg.dependencies['react-dom'],
     }
+  },
+}
+
+```
+
+## Not Working examples
+
+### [18-18](https://github.com/WuMat/micro-examples/tree/main/react-18-18-not-working)
+
+In this example if we have dummy component without hook for example [Button](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Button.js) or even component that only receiving props like [ReceiveProps]everything works correctly, But if something has hooks then fail [Counter](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Counter.js)
+
+```javascript
+/**
+ * HOST
+ */
+{
+  name: 'app2',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/components/Button',
+    './Counter': './src/components/Counter',
+    },
+}
+/**
+ * Remote
+ */
+{
+  name: 'app1',
+  remotes: {
+    app2: 'app2@http://localhost:3002/remoteEntry.js',
   },
 }
 
