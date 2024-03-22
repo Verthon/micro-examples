@@ -7,7 +7,7 @@ if yuo wondering how shared working with different package version [here](https:
 - [Getting Started](#getting-started)
 - [Working Examples](#working-examples)
   - [18-18](#18-18)
-  - [17-18](#17-18)
+  - [17-18-override-17](#17-18-override-17)
 - [Not Working](#not-working-examples)
   - [18-18](#18-18-n)
 
@@ -82,6 +82,8 @@ npm run start
 }
 
 ```
+
+### [18-18-override-17](https://github.com/WuMat/micro-examples/tree/main/react-18-18-working)
 
 ## Not Working examples
 
