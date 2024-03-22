@@ -1,6 +1,6 @@
 # Micro examples
 
-If you wondering how shared working with different package version [here](https://www.angulararchitects.io/en/blog/getting-out-of-version-mismatch-hell-with-module-federation/) is a good explanation
+If you wondering how shared works with different package versions [here](https://www.angulararchitects.io/en/blog/getting-out-of-version-mismatch-hell-with-module-federation/) is a good explanation
 
 ## Content
 
@@ -11,10 +11,11 @@ If you wondering how shared working with different package version [here](https:
   - [17-18-separate-versions](#17-18-separate-versions)
 - [Not Working](#not-working-examples)
   - [18-18](#18-18-n)
+  - [17-18](#17-18-n)
 
 ## Getting Started
 
-if you wanna test something go to the folder that you are interested and run
+if you wanna test something go to the folder that you are interested in and run
 
 1. Go to the specific folder for example
 
@@ -88,11 +89,11 @@ npm run start
 
 Why this is working if we have totally different react versions?
 
-1. React is singleton here host accept only ONE REACT VERSION
-2. Remote has bigger version so WMF always take the higher one
-3. And now host not using the 17 but the 18 react version
+1. React is singleton here host accepts only ONE REACT VERSION
+2. Remote has a bigger version so WMF always takes the higher one
+3. And now the host not using the 17 but the 18 react version
 
-At the beginning of the documentation i pasted link how it works
+At the beginning of the documentation I paste a link to how it works
 
 ```javascript
 /**
@@ -145,7 +146,7 @@ At the beginning of the documentation i pasted link how it works
 
 ### [18-18-n](https://github.com/WuMat/micro-examples/tree/main/react-18-18-not-working)
 
-In this example if we have dummy component without hook for example [Button](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Button.js) or even component that only receive props like [ReceiveProps](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/ReceivedProps.js) everything works correctly, But if something has hooks like [Counter](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Counter.js) then we will receive a lot of errors
+In this example, if we have a dummy component without a hook for example [Button](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Button.js) or even a component that only receives props like [ReceiveProps](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/ReceivedProps.js) everything works correctly, But if something has hooks like [Counter](https://github.com/WuMat/micro-examples/blob/main/react-18-18-not-working/react-18-host/src/components/Counter.js) then we will receive a lot of errors
 
 ```javascript
 /**
@@ -167,6 +168,53 @@ In this example if we have dummy component without hook for example [Button](htt
   name: 'app1',
   remotes: {
     app2: 'app2@http://localhost:3002/remoteEntry.js',
+  },
+}
+
+```
+
+### [17-18-n](https://github.com/WuMat/micro-examples/tree/main/react-17-18-not-working)
+
+it doesn`t matter that the remote has a singleton REACT.
+
+```javascript
+/**
+ * REMOTE React 18
+ */
+{
+  name: 'app2',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/components/Button',
+    './Counter': './src/components/Counter',
+    './ReceivedProps': './src/components/ReceivedProps',
+    },
+  shared: {
+    react: {
+      singleton: true
+      requiredVersion: pkg.dependencies['react'],
+    },
+      "react-dom": {
+        singleton: true
+        requiredVersion: pkg.dependencies['react-dom'],
+    }
+  },
+}
+/**
+ * HOST React 17
+ */
+{
+  name: 'app1',
+  remotes: {
+    app2: 'app2@http://localhost:3002/remoteEntry.js',
+  },
+  shared: {
+    react: {
+      requiredVersion: pkg.dependencies['react'],
+    },
+    "react-dom": {
+      requiredVersion: pkg.dependencies['react-dom'],
+    }
   },
 }
 
