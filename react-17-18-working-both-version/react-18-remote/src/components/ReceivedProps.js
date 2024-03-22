@@ -1,5 +1,7 @@
 import * as React from "react";
-export const ReceivedProps = ({ count }) => {
+import ReactAdapterProvider from "./ReactAdapterProvider";
+
+const ReceivedPropsA = ({ count }) => {
   return (
     <div>
       <div>REACT 18 host ReceiveProps with default export</div>
@@ -8,4 +10,6 @@ export const ReceivedProps = ({ count }) => {
   );
 };
 
-export default ReceivedProps;
+export const Adapted = React.forwardRef((props, ref) => {
+  return <ReactAdapterProvider {...props} component={ReceivedPropsA} ref={ref} />;
+});

@@ -1,11 +1,11 @@
-import LocalButton from "./Button";
-import IdHook from "./IdHook";
-import { Counter } from "./Counter";
+import {Button} from "./Button";
+import {IdHook} from "./IdHook";
+import {Counter}  from "./Counter";
 import React from "react";
 
 const App = () => (
   <div>
-    <LocalButton />
+    <Button />
     <Counter />
     <IdHook />
   </div>

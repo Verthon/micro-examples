@@ -1,6 +1,7 @@
 import React, { useId } from "react";
+import ReactAdapterProvider from "./ReactAdapterProvider";
 
-const IdHook = () => {
+export const IdHook = () => {
   const id = useId();
   return (
     <div>
@@ -11,4 +12,7 @@ const IdHook = () => {
   );
 };
 
-export default IdHook;
+
+export const Adapted= React.forwardRef((props, ref) => {
+  return <ReactAdapterProvider {...props} component={IdHook} ref={ref} />;
+});

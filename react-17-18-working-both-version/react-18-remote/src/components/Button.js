@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ReactAdapterProvider from './ReactAdapterProvider';
 
-const Button = () => {
+export const Button = () => {
+  useEffect(() => {
+    console.log('Button mounted');
+    return () => {
+      console.log('Button unmounted');
+    };
+  }, []);
 return ( <div>
     REACT 18 host Button with default export
     <br />
@@ -8,4 +15,8 @@ return ( <div>
   </div>)
 }
 
-export default Button;
+
+
+export const Adapted = React.forwardRef((props, ref) => {
+  return <ReactAdapterProvider {...props} component={Button} ref={ref} />;
+});
