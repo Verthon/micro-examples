@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Button = () => (
-  <div>
-    REACT 18 host component
+const Button = () => {
+return ( <div>
+    REACT 18 host Button with default export
     <br />
     <button>App 2 Button</button>
-  </div>
-);
+  </div>)
+}
 
 export default Button;

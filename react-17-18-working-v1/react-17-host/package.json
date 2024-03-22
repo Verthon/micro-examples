@@ -1,12 +1,11 @@
 {
-  "name": "different-react-versions-16-18_app1",
-  "description": "React 16",
+  "name": "17-host",
+  "description": "React 17",
   "ignored": true,
   "version": "0.0.0",
   "devDependencies": {
     "@babel/core": "7.24.0",
     "@babel/plugin-proposal-class-properties": "7.18.6",
-    "@module-federation/enhanced": "^0.0.13",
     "@babel/preset-react": "7.23.3",
     "babel-loader": "8.2.5",
     "html-webpack-plugin": "5.6.0",
@@ -22,7 +21,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "react": "18.3.0-canary-a870b2d54-20240314",
-    "react-dom": "18.3.0-canary-a870b2d54-20240314"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }
