@@ -1,6 +1,6 @@
 # Micro examples
 
-if yuo wondering how shared working with different package version [here](https://www.angulararchitects.io/en/blog/getting-out-of-version-mismatch-hell-with-module-federation/) is a good explanation
+If you wondering how shared working with different package version [here](https://www.angulararchitects.io/en/blog/getting-out-of-version-mismatch-hell-with-module-federation/) is a good explanation
 
 ## Content
 
@@ -8,6 +8,7 @@ if yuo wondering how shared working with different package version [here](https:
 - [Working Examples](#working-examples)
   - [18-18](#18-18)
   - [17-18-override-17](#17-18-override-17)
+  - [17-18-separate-versions](#17-18-separate-versions)
 - [Not Working](#not-working-examples)
   - [18-18](#18-18-n)
 
@@ -42,7 +43,7 @@ npm run start
 
 ```javascript
 /**
- * HOST
+ * REMOTE
  */
 {
   name: 'app2',
@@ -62,7 +63,7 @@ npm run start
   },
 }
 /**
- * Remote
+ * HOST
  */
 {
   name: 'app1',
@@ -83,7 +84,62 @@ npm run start
 
 ```
 
-### [18-18-override-17](https://github.com/WuMat/micro-examples/tree/main/react-18-18-working)
+### [17-18-override-17](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-ovrride-17)
+
+Why this is working if we have totally different react versions?
+
+1. React is singleton here host accept only ONE REACT VERSION
+2. Remote has bigger version so WMF always take the higher one
+3. And now host not using the 17 but the 18 react version
+
+At the beginning of the documentation i pasted link how it works
+
+```javascript
+/**
+ * REMOTE React 18
+ */
+{
+  name: 'app2',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/components/Button',
+    './Counter': './src/components/Counter',
+    './ReceivedProps': './src/components/ReceivedProps',
+    },
+  shared: {
+    react: {
+      singleton: true
+      requiredVersion: pkg.dependencies['react'],
+    },
+      "react-dom": {
+        singleton: true
+        requiredVersion: pkg.dependencies['react-dom'],
+    }
+  },
+}
+/**
+ * HOST React 17
+ */
+{
+  name: 'app1',
+  remotes: {
+    app2: 'app2@http://localhost:3002/remoteEntry.js',
+  },
+  shared: {
+    react: {
+      singleton: true,
+      requiredVersion: pkg.dependencies['react'],
+    },
+    "react-dom": {
+      singleton: true,
+      requiredVersion: pkg.dependencies['react-dom'],
+    }
+  },
+}
+
+```
+
+### [17-18-both-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-both-version)
 
 ## Not Working examples
 
@@ -93,7 +149,7 @@ In this example if we have dummy component without hook for example [Button](htt
 
 ```javascript
 /**
- * HOST
+ * REMOTE
  */
 {
   name: 'app2',
@@ -105,7 +161,7 @@ In this example if we have dummy component without hook for example [Button](htt
     },
 }
 /**
- * Remote
+ * HOST
  */
 {
   name: 'app1',
