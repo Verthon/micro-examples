@@ -194,7 +194,7 @@ In this example, if we have a dummy component without a hook for example [Button
 
 ### [17-18-n](https://github.com/WuMat/micro-examples/tree/main/react-17-18-not-working)
 
-it doesn`t matter that the remote has a singleton REACT.
+it doesn`t matter that the remote has a singleton REACT. Host must accepts it as well
 
 ```javascript
 /**
