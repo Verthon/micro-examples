@@ -8,7 +8,8 @@ If you wondering how shared works with different package versions [here](https:/
 - [Working Examples](#working-examples)
   - [18-18](#18-18)
   - [17-18-override-17](#17-18-override-17)
-  - [17-18-separate-versions](#17-18-separate-versions)
+  - [17-18-separate-versions-v1](#17-18-separate-versions-v1)
+  - [17-18-separate-versions-v2](#17-18-separate-versions-v2)
 - [Not Working](#not-working-examples)
   - [18-18](#18-18-n)
   - [17-18](#17-18-n)
@@ -140,7 +141,7 @@ At the beginning of the documentation I paste a link to how it works
 
 ```
 
-### [17-18-separate-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
+### [17-18-separate-versions-v1](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
 
 the most important is that react 18 creates separate roots for components, also with this approach you can pass props and the component will rerender
 
@@ -194,7 +195,7 @@ In this example, if we have a dummy component without a hook for example [Button
 
 ### [17-18-n](https://github.com/WuMat/micro-examples/tree/main/react-17-18-not-working)
 
-it doesn`t matter that the remote has a singleton REACT. Host must accepts it as well
+it doesn`t matter that the remote has a singleton REACT. Host must accept it as well
 
 ```javascript
 /**
