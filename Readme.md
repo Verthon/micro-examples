@@ -140,7 +140,26 @@ At the beginning of the documentation I paste a link to how it works
 
 ```
 
-### [17-18-both-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-both-version)
+### [17-18-both-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
+
+the most important is that react 18 creates separate roots for component
+
+```javascript
+/**
+ * REMOTE
+ */
+
+init = (isMounted) => {
+  (async () => {
+    const { component, children, ...rest } = this.props;
+    const reactNode = React.createElement(component, rest, children);
+    if (!isMounted) {
+      this.root = createRoot(this.refHold);
+    }
+    this.root.render(reactNode);
+  })();
+};
+```
 
 ## Not Working examples
 
