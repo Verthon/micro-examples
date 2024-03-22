@@ -141,7 +141,7 @@ At the beginning of the documentation I paste a link to how it works
 
 ```
 
-### [17-18-separate-versions-v1](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
+### [17-18-separate-versions-v1](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions-v1)
 
 the most important is that react 18 creates separate roots for components, also with this approach you can pass props and the component will rerender
 
@@ -160,6 +160,32 @@ init = (isMounted) => {
     this.root.render(reactNode);
   })();
 };
+```
+
+### [17-18-separate-versions-v2](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-version-v2)
+
+in this approach, we can easily mount whatever we want and where we want for example in vue, angular app, but we cannot pass props all communication must be outside for example pubsub pattern
+
+```javascript
+/**
+ * REMOTE
+ */
+
+export default function (el) {
+  const root = createRoot(el);
+  root.render(<SomeComponent />);
+}
+
+/**
+ * HOST
+ */
+const refComponent = useRef(null);
+
+useEffect(() => {
+  mountSomeComponent(refComponent.current);
+}, []);
+
+return <div ref={refComponent} />;
 ```
 
 ## Not Working examples
