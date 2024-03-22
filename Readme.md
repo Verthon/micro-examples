@@ -140,7 +140,7 @@ At the beginning of the documentation I paste a link to how it works
 
 ```
 
-### [17-18-both-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
+### [17-18-separate-versions](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions)
 
 the most important is that react 18 creates separate roots for components, also with this approach you can pass props and the component will rerender
 
