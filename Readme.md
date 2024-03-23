@@ -13,6 +13,9 @@ If you wondering how shared works with different package versions [here](https:/
 - [Not Working](#not-working-examples)
   - [18-18](#18-18-n)
   - [17-18](#17-18-n)
+- [Shared Deps Research](#shared-deps-research)
+- [bugs](#bugs)
+  - [Wrong component resolve](#wrong-component-resolve)
 
 ## Getting Started
 
@@ -275,3 +278,78 @@ it doesn`t matter that the remote has a singleton REACT. The host must accept it
 }
 
 ```
+
+## shared-deps-research
+
+In this topic, I try to check the behave application when we have a different moment version, Why moment? because this package has `version` exported prop so I can easily check in runtime what version is used.
+
+In every example, I will use
+
+```javascript
+<div>
+  MOMENT, package.json version: {pkg.dependencies.moment}
+  <br />
+  <div>Moment runtime version {moment.version}</div>
+  <div>DATA: {moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
+</div>
+```
+
+### First fight
+
+- Host: moment 2.0.0
+- remote-1: moment 2.0.0
+
+```javascript
+// HOST and REMOTE the same config
+shared: {
+  moment:{},
+}
+```
+
+1. 12 requests
+2. 206 kB transferred
+3. 661 kB resources
+
+```javascript
+// HOST and REMOTE the same config
+shared: {
+  // moment:{},
+}
+```
+
+1. 13 requests
+2. 237 kB transferred
+3. 832 kB resources
+
+### Second fight
+
+- Host: moment 2.0.0
+- remote-1: moment 2.0.0
+- remote-2: moment 2.0.0
+- remote-3: moment 2.0.0
+
+```javascript
+// HOST and REMOTE the same config
+shared: {
+  moment:{},
+}
+```
+
+1. 12 requests
+2. 206 kB transferred
+3. 666 kB resources
+
+```javascript
+// HOST and REMOTE the same config
+shared: {
+  // moment:{},
+}
+```
+
+1. 17 requests
+2. 327 kB transferred
+3. 1.1 MB resources
+
+## Bugs
+
+### Wrong component resolve

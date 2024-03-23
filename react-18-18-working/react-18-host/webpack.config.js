@@ -3,17 +3,18 @@ const webpack = require('webpack');
 const path = require('path');
 const pkg = require('./package.json');
 
+
 /**
  * @type {import('webpack').Configuration}
  **/
 const webpackConfig = {
   entry: './src/index',
-  mode: 'production',
+  mode: 'development',
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3002,
+    port: 3001,
   },
   output: {
     publicPath: 'auto',
@@ -39,12 +40,9 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.container.ModuleFederationPlugin({
-      name: 'app2',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Button': './src/components/Button',
-        './Counter': './src/components/Counter',
-        './ReceivedProps': './src/components/ReceivedProps',
+      name: 'app1',
+      remotes: {
+        app2: 'app2@http://localhost:3002/remoteEntry.js',
       },
       shared: {
         react: {

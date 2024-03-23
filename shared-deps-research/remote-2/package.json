@@ -1,0 +1,27 @@
+{
+  "name": "18-18-host",
+  "description": "React 18",
+  "version": "0.0.0",
+  "ignored": true,
+  "devDependencies": {
+    "@babel/core": "7.24.0",
+    "@babel/preset-react": "7.23.3",
+    "babel-loader": "8.2.5",
+    "html-webpack-plugin": "5.6.0",
+    "serve": "14.2.1",
+    "webpack": "5.89.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.15.1"
+  },
+  "scripts": {
+    "start": "webpack serve --mode production --open",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3002",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "moment": "2.30.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
