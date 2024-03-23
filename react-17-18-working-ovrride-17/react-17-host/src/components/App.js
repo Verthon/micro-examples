@@ -1,13 +1,15 @@
 import React from "react";
+import pkg from '../../package.json'
 const RemoteButton = React.lazy(() => import("app2/Button"));
 const Counter = React.lazy(() => import("app2/Counter").then(module => ({ default: module.Counter })));
 const ReceivedProps = React.lazy(() => import("app2/ReceivedProps"));
 const IdHook = React.lazy(() => import("app2/IdHook"));
 export const App = () => {
+  console.log(__webpack_share_scopes__)
   const [count, setCount] = React.useState(0);
   return (
     <div>
-      <div>APP</div>
+      <div>APP HOST package.json react version {pkg.dependencies.react}</div>
       <div>React version: {React.version}</div>
       ---------------------------------
       <div>

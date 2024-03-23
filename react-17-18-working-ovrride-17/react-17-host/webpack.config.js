@@ -47,7 +47,8 @@ const webpackConfig = {
       shared: {
         react: {
           singleton: true,
-          requiredVersion: pkg.dependencies['react'],
+          strictVersion: true,
+          requiredVersion: '>=17.0.2 <=18.2.0',
         },
         "react-dom": {
           singleton: true,

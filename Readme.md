@@ -90,7 +90,7 @@ npm run start
 
 Why this is working if we have totally different react versions?
 
-1. React is singleton here host accepts only ONE REACT VERSION
+1. React is singleton here so in runtime accepts only ONE REACT VERSION
 2. Remote has a bigger version so WMF always takes the higher one
 3. And now the host not using the 17 but the 18 react version
 
@@ -139,6 +139,16 @@ At the beginning of the documentation I paste a link to how it works
   },
 }
 
+```
+
+This situation is a little bit dangerous because we don't know what react version can we receive! So we can add a flag that can check the react version and if the version aligns with our requirements then everything will work correctly otherwise will throw an error
+
+```javascript
+react: {
+  singleton: true,
+  strictVersion: true,
+  requiredVersion: '>=17.0.2 <=18.2.0',
+},
 ```
 
 ### [17-18-separate-versions-v1](https://github.com/WuMat/micro-examples/tree/main/react-17-18-working-separate-versions-v1)
@@ -221,7 +231,7 @@ In this example, if we have a dummy component without a hook for example [Button
 
 ### [17-18-n](https://github.com/WuMat/micro-examples/tree/main/react-17-18-not-working)
 
-it doesn`t matter that the remote has a singleton REACT. Host must accept it as well
+it doesn`t matter that the remote has a singleton REACT. The host must accept it as well
 
 ```javascript
 /**
