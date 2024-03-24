@@ -39,8 +39,8 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.container.ModuleFederationPlugin({
-      name: 'remote2',
-      filename: 'remoteEntry.js',
+      name: 'app',
+      filename: 'remoteEntry2.js',
       exposes: {
         './DateRemote': './src/components/DateRemote',
       },

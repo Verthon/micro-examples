@@ -355,15 +355,33 @@ shared: {
 
 There will be examples of bugs that I found
 
-## fetched only one remote
+### fetched only one remote [link](https://github.com/WuMat/micro-examples/tree/main/bug-remote-fetch)
 
 ```javascript
-
+// HOST v1
 remotes: {
-  remote1: 'app2@http://localhost:3002/remoteEntry.js',
-  remote2: 'app2@http://localhost:3003/remoteEntry.js',
-  remote3: 'app2@http://localhost:3004/remoteEntry.js',
+  remote1: 'app@http://localhost:3002/remoteEntry.js',
+  remote2: 'app@http://localhost:3003/remoteEntry.js',
+  remote3: 'app@http://localhost:3004/remoteEntry.js',
 },
+// HOST v2
+remotes: {
+  remote1: 'app@http://localhost:3002/remoteEntry1.js',
+  remote2: 'app@http://localhost:3003/remoteEntry1.js',
+  remote3: 'app@http://localhost:3004/remoteEntry1.js',
+},
+// remote 1/2/3 the same
+name: 'app',
+exposes: {
+  './DateRemote': './src/components/DateRemote',
+},
+```
+
+conclusion
+
+```javascript
+// Remote
+ name: 'must be unique',
 ```
 
 ### Wrong component resolve [link](https://github.com/WuMat/micro-examples/tree/main/bug-component-resolve)

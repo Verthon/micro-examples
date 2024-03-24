@@ -42,9 +42,9 @@ const webpackConfig = {
     new webpack.container.ModuleFederationPlugin({
       name: 'app1',
       remotes: {
-        remote1: 'remote1@http://localhost:3002/remoteEntry.js',
-        remote2: 'remote2@http://localhost:3003/remoteEntry.js',
-        remote3: 'remote3@http://localhost:3004/remoteEntry.js',
+        remote1: 'app@http://localhost:3002/remoteEntry1.js',
+        remote2: 'app@http://localhost:3003/remoteEntry2.js',
+        remote3: 'app@http://localhost:3004/remoteEntry3.js',
       },
       shared: {
         moment:{},
