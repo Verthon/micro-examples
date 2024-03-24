@@ -1,6 +1,7 @@
 {
   "name": "18-18-consumer",
   "description": "React 18",
+  "isShared": true,
   "ignored": true,
   "version": "0.0.0",
   "devDependencies": {

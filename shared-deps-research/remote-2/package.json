@@ -2,6 +2,7 @@
   "name": "18-18-host",
   "description": "React 18",
   "version": "0.0.0",
+  "isShared": true,
   "ignored": true,
   "devDependencies": {
     "@babel/core": "7.24.0",
@@ -20,7 +21,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "moment": "2.30.1",
+    "moment": "2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

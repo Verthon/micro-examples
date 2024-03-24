@@ -47,7 +47,7 @@ const webpackConfig = {
         remote3: 'remote3@http://localhost:3004/remoteEntry3.js',
       },
       shared: {
-        // moment:{},
+        moment:{},
 
         react: {
           singleton: true,

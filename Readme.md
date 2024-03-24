@@ -279,7 +279,7 @@ it doesn`t matter that the remote has a singleton REACT. The host must accept it
 
 ```
 
-## shared-deps-research
+## shared-deps-research [link](https://github.com/WuMat/micro-examples/tree/main/shared-deps-research)
 
 In this topic, I try to check the behave application when we have a different moment version, Why moment? because this package has `version` exported prop so I can easily check in runtime what version is used.
 
@@ -346,10 +346,41 @@ shared: {
 }
 ```
 
-1. 17 requests
-2. 327 kB transferred
+1. 18 requests
+2. 329 kB transferred
 3. 1.1 MB resources
 
 ## Bugs
 
-### Wrong component resolve
+There will be examples of bugs that I found
+
+### Wrong component resolve [link](https://github.com/WuMat/micro-examples/tree/main/bug-component-resolve)
+
+In this situation, only the component from remote 3 is resolved correctly. Component `DateRemote_2` is replaced by `DateRemote_1`
+
+```javascript
+// Remote-1
+exposes: {
+  './DateRemote1': './src/components/DateRemote',
+},
+// Remote-2
+exposes: {
+  './DateRemote2': './src/components/DateRemote',
+},
+// Remote-3
+exposes: {
+  './DateRemote': './src/components/DateRemote3',
+},
+
+// HOST
+remotes: {
+  remote1: 'remote1@http://localhost:3002/remoteEntry1.js',
+  remote2: 'remote2@http://localhost:3003/remoteEntry2.js',
+  remote3: 'remote3@http://localhost:3004/remoteEntry3.js',
+},
+
+// Application
+const DateRemote_1 = React.lazy(() => import("remote1/DateRemote1"));
+const DateRemote_2 = React.lazy(() => import("remote2/DateRemote2"));
+const DateRemote_3 = React.lazy(() => import("remote3/DateRemote"));
+```

@@ -42,10 +42,10 @@ const webpackConfig = {
       name: 'remote2',
       filename: 'remoteEntry2.js',
       exposes: {
-        './DateRemote2': './src/components/DateRemote',
+        './DateRemote2': './src/components/DateRemote2',
       },
       shared: {
-        // moment:{},
+        // ...(pkg.isShared? {moment:{}} : {}),
         react: {
           singleton: true,
           requiredVersion: pkg.dependencies['react'],
