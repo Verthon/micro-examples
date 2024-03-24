@@ -16,6 +16,7 @@ If you wondering how shared works with different package versions [here](https:/
 - [Shared Deps Research](#shared-deps-research)
 - [bugs](#bugs)
   - [Wrong component resolve](#wrong-component-resolve)
+  - [fetched only one remote](#fetched-only-one-remote)
 
 ## Getting Started
 
@@ -353,6 +354,17 @@ shared: {
 ## Bugs
 
 There will be examples of bugs that I found
+
+## fetched only one remote
+
+```javascript
+
+remotes: {
+  remote1: 'app2@http://localhost:3002/remoteEntry.js',
+  remote2: 'app2@http://localhost:3003/remoteEntry.js',
+  remote3: 'app2@http://localhost:3004/remoteEntry.js',
+},
+```
 
 ### Wrong component resolve [link](https://github.com/WuMat/micro-examples/tree/main/bug-component-resolve)
 
