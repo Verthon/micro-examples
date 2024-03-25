@@ -18,6 +18,9 @@ const webpackConfig = {
   output: {
     publicPath: 'auto',
   },
+  performance: {
+    hints: false,
+  },
   module: {
     rules: [
       {

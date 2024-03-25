@@ -297,21 +297,21 @@ In every example, I will use and I will be used shortcuts:
 |             | both on | both off | Hon / Roff | Hoff / Ron |
 | ----------- | ------- | -------- | ---------- | ---------- |
 | requests    | 12      | 12       | 13         | 13         |
-| transferred | 206 kb  | 237 kb   | 238 kb     | 238 kb     |
-| resources   | 663 kb  | 833 kb   | 834 kb     | 833 kb     |
+| transferred | 206 kB  | 237 kB   | 238 kB     | 238 kB     |
+| resources   | 663 kB  | 833 kB   | 834 kB     | 833 kB     |
 
 ### Second fight
 
 - Host: moment 2.0.0
 - remote-1: moment 2.0.0
 - remote-2: moment 2.0.0
-- remote-3: moment 2.0.0
+- remote-3: moment 2.30.1
 
-|             | all on | all off |
-| ----------- | ------ | ------- |
-| requests    | 18     | 18      |
-| transferred | 298 kb | 329 kb  |
-| resources   | 929 kb | 1.1 MB  |
+|             | all on | all off | H on /R all off | H off/ R all on | H,R1,R2 on / R3 off |
+| ----------- | ------ | ------- | --------------- | --------------- | ------------------- |
+| requests    | 20     | 19      | 20              | 21              | 19                  |
+| transferred | 373 kB | 404 kB  | 404 kB          | 405 kB          | 373 kB              |
+| resources   | 1.2 MB | 1.4 MB  | 1.4 MB          | 1.4 MB          | 1.2 MB              |
 
 ## Bugs
 
