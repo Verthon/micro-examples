@@ -45,7 +45,7 @@ const webpackConfig = {
         './DateRemote1': './src/components/DateRemote1',
       },
       shared: {
-        // ...(pkg.isShared? {moment:{}} : {}),
+        ...(pkg.isShared? {moment:{}} : {}),
         react: {
           singleton: true,
           requiredVersion: pkg.dependencies['react'],

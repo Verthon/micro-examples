@@ -284,43 +284,21 @@ it doesn`t matter that the remote has a singleton REACT. The host must accept it
 
 In this topic, I try to check the behave application when we have a different moment version, Why moment? because this package has `version` exported prop so I can easily check in runtime what version is used.
 
-In every example, I will use
+In every example, I will use and I will be used shortcuts:
 
-```javascript
-<div>
-  MOMENT, package.json version: {pkg.dependencies.moment}
-  <br />
-  <div>Moment runtime version {moment.version}</div>
-  <div>DATA: {moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
-</div>
-```
+- H - Host
+- R(1/2/3) - Remote(1/2/3)
 
 ### First fight
 
 - Host: moment 2.0.0
 - remote-1: moment 2.0.0
 
-```javascript
-// HOST and REMOTE the same config
-shared: {
-  moment:{},
-}
-```
-
-1. 12 requests
-2. 206 kB transferred
-3. 661 kB resources
-
-```javascript
-// HOST and REMOTE the same config
-shared: {
-  // moment:{},
-}
-```
-
-1. 13 requests
-2. 237 kB transferred
-3. 832 kB resources
+|             | both on | both off | Hon / Roff | Hoff / Ron |
+| ----------- | ------- | -------- | ---------- | ---------- |
+| requests    | 12      | 12       | 13         | 13         |
+| transferred | 206 kb  | 237 kb   | 238 kb     | 238 kb     |
+| resources   | 663 kb  | 833 kb   | 834 kb     | 833 kb     |
 
 ### Second fight
 
@@ -329,27 +307,11 @@ shared: {
 - remote-2: moment 2.0.0
 - remote-3: moment 2.0.0
 
-```javascript
-// HOST and REMOTE the same config
-shared: {
-  moment:{},
-}
-```
-
-1. 12 requests
-2. 206 kB transferred
-3. 666 kB resources
-
-```javascript
-// HOST and REMOTE the same config
-shared: {
-  // moment:{},
-}
-```
-
-1. 18 requests
-2. 329 kB transferred
-3. 1.1 MB resources
+|             | all on | all off |
+| ----------- | ------ | ------- |
+| requests    | 18     | 18      |
+| transferred | 298 kb | 329 kb  |
+| resources   | 929 kb | 1.1 MB  |
 
 ## Bugs
 
@@ -414,3 +376,7 @@ const DateRemote_1 = React.lazy(() => import("remote1/DateRemote1"));
 const DateRemote_2 = React.lazy(() => import("remote2/DateRemote2"));
 const DateRemote_3 = React.lazy(() => import("remote3/DateRemote"));
 ```
+
+19 requests
+329 kB transferred
+1.1 MB resources

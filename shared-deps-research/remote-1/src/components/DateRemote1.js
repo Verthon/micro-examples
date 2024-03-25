@@ -8,7 +8,7 @@ const DateRemote = () => {
       <div>REMOTE 1</div>
       MOMENT, package.json version: {pkg.dependencies.moment}
       <div>
-        {/* isShared: <b>{`${pkg.isShared}`}</b> */}
+        isShared: <b>{`${pkg.isShared}`}</b>
       </div>
       <br />
       <div>Moment runtime version {moment.version}</div>

@@ -12,9 +12,9 @@ export const App = () => {
       <div>APP-Host</div>
       <div>Paczka uzyta moment: {moment.version}</div>
       <div>DATA: {moment().format('MMMM Do YYYY, h:mm:ss a')}</div>
-      {/* <div>
+      <div>
         isShared: <b>{`${pkg.isShared}`}</b>
-      </div> */}
+      </div>
       ---------------------------------
       <div>
         <div
