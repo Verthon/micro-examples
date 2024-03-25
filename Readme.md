@@ -376,7 +376,3 @@ const DateRemote_1 = React.lazy(() => import("remote1/DateRemote1"));
 const DateRemote_2 = React.lazy(() => import("remote2/DateRemote2"));
 const DateRemote_3 = React.lazy(() => import("remote3/DateRemote"));
 ```
-
-19 requests
-329 kB transferred
-1.1 MB resources
