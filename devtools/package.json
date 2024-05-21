@@ -1,0 +1,20 @@
+{
+  "name": "different-react-versions-16-18",
+  "description": "Two apps, one using React 16 and the other using React 18",
+  "version": "1.0.0",
+  "workspaces": [
+    "app1",
+    "app2"
+  ],
+  "scripts": {
+    "start-host": "npm --prefix ./host run start",
+    "start-remote-1": "npm --prefix ./remote-1 run start",
+    "start-remote-2": "npm --prefix ./remote-2 run start",
+    "start-remote-3": "npm --prefix ./remote-3 run start",
+    "start": "concurrently -n host,remote-1,remote-2,remote-3 -c red,green,yellow,cyan \"npm run start-host\" \"npm run start-remote-1\" \"npm run start-remote-2\" \"npm run start-remote-3\"",
+    "postinstall": "npm --prefix ./host install && npm --prefix ./remote-1 install && npm --prefix ./remote-2 install && npm --prefix ./remote-3 install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
